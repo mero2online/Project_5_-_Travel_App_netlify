@@ -44,12 +44,6 @@ app.use(express.static('dist'));
 
 console.log(__dirname);
 const router = express.Router();
-
-router.get('/', function (req, res) {
-  res.sendFile('dist/index.html');
-});
-router.get('/all', getData);
-router.post('/geonamesData', geonamesData);
 app.use('/.netlify/functions/server', router);  // path must route to lambda
 
 app.get('/', function (req, res) {
