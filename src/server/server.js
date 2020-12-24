@@ -1,5 +1,4 @@
-// Setup empty JS object to act as endpoint for all routes
-let projectData = {};
+'use strict';
 
 var path = require('path');
 
@@ -7,6 +6,8 @@ var path = require('path');
 const express = require('express');
 
 const mockAPIResponse = require('./mockAPI.js');
+
+const serverless = require('serverless-http');
 
 // Start up an instance of app
 const app = express();
@@ -35,30 +36,26 @@ const weatherbitAPIkey = process.env.WEATHERBIT_API_KEY;
 // Personal API Key for pixabay
 const pixabayAPIkey = process.env.PIXABAY_API_KEY;
 
+// Setup empty JS object to act as endpoint for all routes
+let projectData = {};
+
 // Initialize the main project folder
 app.use(express.static('dist'));
 
 console.log(__dirname);
+const router = express.Router();
+app.use('/.netlify/functions/server', router);  // path must route to lambda
 
-app.get('/', function (req, res) {
+router.get('/', function (req, res) {
   res.sendFile('dist/index.html');
 });
 
-// Setup Server
-const port = process.env.PORT || 8081;
-const server = app.listen(port, listening);
-
-function listening() {
-  console.log(`server running on localhost: ${port}`);
-  console.log(`http://localhost:${port}/`);
-}
-
-app.get('/test', function (req, res) {
+router.get('/test', function (req, res) {
   res.send(mockAPIResponse);
 });
 
 // GET Route for all data
-app.get('/all', getData);
+router.get('/all', getData);
 
 function getData(req, res) {
   res.send(projectData);
@@ -66,7 +63,7 @@ function getData(req, res) {
 }
 
 // POST Route geonames API Data
-app.post('/geonamesData', geonamesData);
+router.post('/geonamesData', geonamesData);
 
 function geonamesData(req, res) {
   let gData = req.body;
@@ -83,7 +80,7 @@ function geonamesData(req, res) {
 }
 
 // POST Route weatherbit API Data
-app.post('/weatherData', weatherData);
+router.post('/weatherData', weatherData);
 
 function weatherData(req, res) {
   let wData = req.body;
@@ -97,7 +94,7 @@ function weatherData(req, res) {
 }
 
 // POST Route pixabay API Data
-app.post('/imageData', imageData);
+router.post('/imageData', imageData);
 
 function imageData(req, res) {
   let iData = req.body;
@@ -110,7 +107,7 @@ function imageData(req, res) {
 }
 
 // POST Route countryInfo Data
-app.post('/countryInfo', countryInfo);
+router.post('/countryInfo', countryInfo);
 
 function countryInfo(req, res) {
   let coData = req.body;
@@ -130,8 +127,9 @@ function countryInfo(req, res) {
 }
 
 // POST Route for testing the server
-app.post('/test', async (req, res) => {
+router.post('/test', async (req, res) => {
   res.send(req.body);
 });
 
 module.exports = app;
+module.exports.handler = serverless(app);
