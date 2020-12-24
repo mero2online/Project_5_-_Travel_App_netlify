@@ -46,16 +46,16 @@ console.log(__dirname);
 const router = express.Router();
 app.use('/.netlify/functions/server', router);  // path must route to lambda
 
-router.get('/', function (req, res) {
+app.get('/', function (req, res) {
   res.sendFile('dist/index.html');
 });
 
-router.get('/test', function (req, res) {
+app.get('/test', function (req, res) {
   res.send(mockAPIResponse);
 });
 
 // GET Route for all data
-router.get('/all', getData);
+app.get('/all', getData);
 
 function getData(req, res) {
   res.send(projectData);
@@ -63,7 +63,7 @@ function getData(req, res) {
 }
 
 // POST Route geonames API Data
-router.post('/geonamesData', geonamesData);
+app.post('/geonamesData', geonamesData);
 
 function geonamesData(req, res) {
   let gData = req.body;
@@ -80,7 +80,7 @@ function geonamesData(req, res) {
 }
 
 // POST Route weatherbit API Data
-router.post('/weatherData', weatherData);
+app.post('/weatherData', weatherData);
 
 function weatherData(req, res) {
   let wData = req.body;
@@ -94,7 +94,7 @@ function weatherData(req, res) {
 }
 
 // POST Route pixabay API Data
-router.post('/imageData', imageData);
+app.post('/imageData', imageData);
 
 function imageData(req, res) {
   let iData = req.body;
@@ -107,7 +107,7 @@ function imageData(req, res) {
 }
 
 // POST Route countryInfo Data
-router.post('/countryInfo', countryInfo);
+app.post('/countryInfo', countryInfo);
 
 function countryInfo(req, res) {
   let coData = req.body;
@@ -127,7 +127,7 @@ function countryInfo(req, res) {
 }
 
 // POST Route for testing the server
-router.post('/test', async (req, res) => {
+app.post('/test', async (req, res) => {
   res.send(req.body);
 });
 
