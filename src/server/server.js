@@ -43,10 +43,10 @@ let projectData = {};
 app.use(express.static('dist'));
 
 console.log(__dirname);
-const router = express.Router();
-app.use('/.netlify/functions/server', router);  // path must route to lambda
 
-app.get('/', function (req, res) {
+const router = express.Router();
+
+router.get('/', function (req, res) {
   res.sendFile('dist/index.html');
 });
 
@@ -130,6 +130,9 @@ function countryInfo(req, res) {
 app.post('/test', async (req, res) => {
   res.send(req.body);
 });
+
+app.use('/.netlify/functions/server', router);  // path must route to lambda
+app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../../dist/index.html')));
 
 module.exports = app;
 module.exports.handler = serverless(app);
