@@ -47,7 +47,7 @@ console.log(__dirname);
 const router = express.Router();
 
 router.get('/', function (req, res) {
-  res.sendFile('dist/index.html');
+  res.sendFile(path.join(__dirname, '../../dist/index.html'));
 });
 
 app.get('/test', function (req, res) {
