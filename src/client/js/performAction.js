@@ -33,7 +33,7 @@ function performAction(e) {
     Client.weatherData(lat, lon, countDownDays);
 
     // POST geonames API Data, start and end date to server
-    postData('/geonamesData', {
+    postData('/.netlify/functions/geonamesData', {
       countryName: data.geonames[0].countryName,
       lat: data.geonames[0].lat,
       lng: data.geonames[0].lng,

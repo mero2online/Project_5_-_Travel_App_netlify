@@ -25,7 +25,7 @@ function weatherData(lat, lon, countDownDays) {
           (weatherIcon = 0));
 
       // POST Weather Data to server
-      postWeatherData('/weatherData', {
+      postWeatherData('/.netlify/functions/weatherData', {
         max_temp: max_temp,
         min_temp: min_temp,
         weather_description: weather_description,
