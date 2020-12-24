@@ -10,7 +10,14 @@
     "buildstart": "npm run build-prod && npm start",
     "build": "netlify-lambda build /src/server/"
   },
-  "proxy": "/.netlify/functions/server",
+  "proxy": {
+    "/.netlify/functions/server": {
+      "target": "http://localhost:8081",
+      "pathRewrite": {
+        "^/\\/.netlify/functions/server": ""
+      }
+    }
+  },
   "keywords": [],
   "author": "Mohamed Omar",
   "license": "ISC",
