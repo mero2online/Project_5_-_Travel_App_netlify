@@ -1,0 +1,49 @@
+@media only screen and (min-width: 401px) and (max-width: 760px) {
+  .start-end-date {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    grid-template-areas:
+      'sstartDate startDate'
+      'eendDate endDate'
+      'printTrip generate';
+  }
+
+  #entryHolder {
+    justify-content: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0fr 0fr 0fr 0fr 0fr 1fr;
+    grid-template-areas:
+      'inputData'
+      'countdown'
+      'lengthOfTrip'
+      'images'
+      'weatherData '
+      'countryInfo';
+  }
+
+  .images {
+    display: flex;
+    flex-direction: column;
+    img {
+      width: 100%;
+      height: 320px;
+    }
+  }
+
+  #countryInfo {
+    table {
+      font-size: 17px;
+    }
+  }
+  
+  .start-end-date {
+    button {
+      font-size: unset;
+    }
+  }
+  /* 
+  Don't buy any styling after this curly bracket 
+  */
+}

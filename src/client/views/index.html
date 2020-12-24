@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div id="app">
+    <div class="holder headline">
+      <h1>Travel App</h1>
+    </div>
+    <div class="holder inputFields">
+      <div class="holder city">
+        <label for="city">Trip destination</label>
+        <input type="text" id="city" placeholder="enter city name here">
+      </div>
+      <div class="holder start-end-date">
+        <label class="startDate" for="startDate">Start date</label>
+        <input type="date" id="startDate" placeholder="MM/DD/YYYY">
+        <label class="endDate" for="endDate">End date</label>
+        <input type="date" id="endDate" placeholder="MM/DD/YYYY">
+        <button id="generate" type="submit"> Query for trip </button>
+        <button id="printTrip" onclick="window.print()">Print trip</button>
+      </div>
+    </div>
+    <div class="holder info">
+      <div class="title">
+        <h2>Trip information</h2>
+      </div>
+      <div class="save-remove-trip">
+        <button id="saveTrip" type="submit">Save trip</button>
+        <button id="removeTrip" type="submit">Remove trip</button>
+      </div>
+      <div id="entryHolder">
+        <div id="inputData"></div>
+        <div id="countdown"></div>
+        <div id="lengthOfTrip"></div>
+        <div id="weatherData"></div>
+        <section class="images">
+          <div id="cityImage"></div>
+          <div id="countryImage"></div>
+        </section>
+        <div id="countryInfo"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    <div class="container">
+      <p><small>
+          Made with <span>❤</span> by Mohamed Omar
+        </small></p>
+    </div>
+  </footer>
+  <!-- <script>
+    // Check that service workers are supported
+    if ('serviceWorker' in navigator) {
+      // Use the window load event to keep the page load performant
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js');
+      });
+    }
+  </script> -->
+</body>
+
+</html>

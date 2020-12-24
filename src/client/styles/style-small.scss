@@ -1,0 +1,72 @@
+@media only screen and (max-width: 400px) {
+  .city {
+    input {
+      font-size: unset;
+    }
+  }
+
+  #entryHolder {
+    justify-content: center;
+    grid-template-columns: 290px;
+    grid-template-rows: 0fr 0fr 0fr 0fr 0fr 1fr;
+    grid-template-areas:
+      'inputData'
+      'countdown'
+      'lengthOfTrip'
+      'images'
+      'weatherData'
+      'countryInfo';
+  }
+
+  .start-end-date {
+    flex-direction: column;
+    align-items: stretch;
+    button {
+      font-size: unset;
+      margin: 5px;
+    }
+  }
+
+  #countryInfo {
+    font-weight: bold;
+    img {
+      width: 90%;
+      height: 80px;
+    }
+    table {
+      font-size: 14px;
+      tr,
+      td {
+        padding: 5px;
+        margin: 5px;
+      }
+    }
+  }
+
+  .images {
+    display: flex;
+    flex-direction: column;
+    img {
+      width: 200px;
+      height: 150px;
+    }
+  }
+
+  .save-remove-trip {
+    button {
+      font-size: unset;
+    }
+  }
+  /* 
+  Don't buy any styling after this curly bracket 
+  */
+}
+
+@media only screen and (max-width: 310px) {
+  #app {
+    width: fit-content;
+  }
+  /* 
+  Don't buy any styling after this curly bracket 
+  */
+}

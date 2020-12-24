@@ -1,0 +1,249 @@
+body {
+  background: #100e17;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+#app {
+  display: grid;
+  grid-auto-rows: minmax(1em, auto);
+  grid-template-columns: 1fr;
+  height: 100%;
+  background: #1f1c28;
+  color: #a1a1af;
+  border: 1px solid #312d3c;
+  border-radius: 8px;
+  justify-items: center;
+  grid-gap: 1em;
+  font-size: 20px;
+  padding: 30px 0px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.holder {
+  height: fit-content;
+}
+
+.headline {
+  color: #0888bb;
+  h1 {
+    margin: 5px 0px;
+  }
+}
+
+.inputFields {
+  display: grid;
+  grid-gap: 5px;
+  justify-items: center;
+  background: #262330;
+  color: #a1a1af;
+  border: 1px solid #312d3c;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.start-end-date {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+#generate {
+  grid-area: generate;
+}
+
+#printTrip {
+  grid-area: printTrip;
+}
+
+.startDate {
+  grid-area: sstartDate;
+}
+
+#startDate {
+  grid-area: startDate;
+}
+
+.endDate {
+  grid-area: eendDate;
+}
+
+#endDate {
+  grid-area: endDate;
+}
+
+.title {
+  padding: 10px;
+  text-align: center;
+}
+
+.info {
+  display: none;
+  background: #001628;
+  // min-width: 400px;
+  border-radius: 20px;
+  width: 95%;
+  > div > div,
+  section {
+    border-radius: 15px;
+    border: 1px solid;
+    margin: 5px;
+    padding: 5px 10px;
+  }
+}
+
+#entryHolder {
+  color: #62b1d8;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0fr 0fr 0fr 0fr 1fr;
+  grid-template-areas:
+    'countdown countdown inputData inputData'
+    'lengthOfTrip lengthOfTrip inputData inputData'
+    'images images images images'
+    '. weatherData weatherData .'
+    'countryInfo countryInfo countryInfo countryInfo';
+}
+
+#inputData {
+  grid-area: inputData;
+  // text-align: center;
+}
+
+#countdown {
+  grid-area: countdown;
+}
+
+#lengthOfTrip {
+  grid-area: lengthOfTrip;
+}
+
+#weatherData {
+  grid-area: weatherData;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+/*  Basic Styling To Override Default For Basic HTML Elements */
+label {
+  display: block;
+  font-size: 25px;
+}
+
+input {
+  display: block;
+  background: #f5f3f4;
+  color: #000;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  border: none;
+  text-transform: uppercase;
+  padding: 5px;
+}
+
+button {
+  display: block;
+  background-image: linear-gradient(to top left, #855edd, #63afd3);
+  color: #000;
+  font-size: 26px;
+  font-family: 'Roboto', sans-serif;
+  border: none;
+  box-shadow: 2px 4px 5px #444;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-image: linear-gradient(#855edd, #63afd3);
+  color: #fff;
+  transform: translateY(2px);
+}
+
+h1 {
+  font-size: 36px;
+}
+
+#countryInfo {
+  grid-area: countryInfo;
+  font-weight: bold;
+  img {
+    width: 135px;
+    height: 100px;
+  }
+  table {
+    margin: auto;
+    tr,
+    td {
+      border: 3px solid #62b1d8;
+      border-radius: 10px;
+      padding: 1rem;
+    }
+  }
+}
+
+.images {
+  grid-area: images;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100%;
+  justify-content: center;
+  img {
+    border-radius: 20px;
+    border: 1px solid;
+    width: 100%;
+    height: 380px;
+  }
+}
+
+.save-remove-trip {
+  display: flex;
+  justify-content: space-around;
+  margin: 0px 0px 20px;
+}
+
+h3 {
+  color: #c32b53;
+}
+
+.page-footer {
+  text-align: right;
+  font-size: 1rem;
+  color: #fff;
+  margin: 40px;
+  span {
+    color: #f00;
+  }
+}
+
+/* Reset style for HTML element on active to have no border*/
+input:focus,
+select:focus,
+button:focus {
+  outline: none;
+}
+/* Style for Placeholder Text*/
+::placeholder {
+  /* Firefox, Chrome, Opera */
+  color: #000;
+  font-family: 'Roboto', sans-serif;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #000;
+  font-family: 'Roboto', sans-serif;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #000;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Hide input fields in upper part of app while printing travel info */
+@media print {
+  .inputFields {
+    display: none;
+  }
+}
