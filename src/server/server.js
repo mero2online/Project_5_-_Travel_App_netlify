@@ -46,13 +46,10 @@ console.log(__dirname);
 
 const router = express.Router();
 
-app.use('/.netlify/functions/server', router);  // path must route to lambda
-
 router.get('/', function (req, res) {
   res.sendFile('dist/index.html');
 });
-router.get('/all', getData);
-router.post('/geonamesData', geonamesData);
+
 app.use('/.netlify/functions/server', router);  // path must route to lambda
 
 router.get('/', function (req, res) {
@@ -139,9 +136,6 @@ function countryInfo(req, res) {
 app.post('/test', async (req, res) => {
   res.send(req.body);
 });
-
-app.use('/.netlify/functions/server', router);  // path must route to lambda
-app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../../dist/index.html')));
 
 module.exports = app;
 module.exports.handler = serverless(app);
