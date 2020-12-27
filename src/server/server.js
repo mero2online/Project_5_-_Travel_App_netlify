@@ -23,8 +23,8 @@ app.use(
 app.use(bodyParser.json());
 
 // Cors for cross origin allowance
-const cors = require('cors');
-app.use(cors());
+// const cors = require('cors');
+// app.use(cors());
 
 const dotenv = require('dotenv');
 dotenv.config();
