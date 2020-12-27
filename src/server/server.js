@@ -50,6 +50,12 @@ router.get('/', function (req, res) {
   res.sendFile('dist/index.html');
 });
 
+app.use('/.netlify/functions/server', router);  // path must route to lambda
+
+router.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, '../../dist/index.html'));
+});
+
 app.get('/test', function (req, res) {
   res.send(mockAPIResponse);
 });
@@ -129,12 +135,6 @@ function countryInfo(req, res) {
 // POST Route for testing the server
 app.post('/test', async (req, res) => {
   res.send(req.body);
-});
-
-app.use('/.netlify/functions/server', router); // path must route to lambda
-
-router.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, '../../dist/index.html'));
 });
 
 module.exports = app;
