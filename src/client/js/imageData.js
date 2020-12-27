@@ -28,7 +28,7 @@ function imageData(cityName, countryName) {
       : (countryWebformatURL = 0);
 
     // POST image data to server
-    postImageData('/imageData', {
+    postImageData('/.netlify/functions/server/imageData', {
       cityTotalHits: cityTotalHits,
       cityWebformatURL: cityWebformatURL,
       countryTotalHits: countryTotalHits,

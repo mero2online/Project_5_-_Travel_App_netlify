@@ -8,7 +8,7 @@ function countryInfo(countryName) {
     .then(function (res) {
 
       // POST Country information to server
-      postCountryInfoData('/countryInfo', {
+      postCountryInfoData('/.netlify/functions/server/countryInfo', {
         alpha3Code: res[0].alpha3Code,
         capital: res[0].capital,
         region: res[0].region,
